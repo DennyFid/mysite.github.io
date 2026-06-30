@@ -1,0 +1,349 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>BNA Roadtrip - Day 1 Nashville to Savannah, TN - Tripperist</title>
+	<style>
+		:root {
+			--bg: #1a1a2e;
+			--bg-secondary: #16213e;
+			--text: #e0e0e0;
+			--text-secondary: #b0b0b0;
+			--text-tertiary: #7c9fd8;
+			--border: #2a2a3e;
+			--primary: #667eea;
+		}
+
+		html.light-mode {
+			--bg: #f5f5f5;
+			--bg-secondary: #ffffff;
+			--text: #333;
+			--text-secondary: #555;
+			--text-tertiary: #667eea;
+			--border: #e5e5e5;
+		}
+
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+			background: var(--bg);
+			color: var(--text);
+			line-height: 1.6;
+			transition: background-color 0.3s, color 0.3s;
+		}
+
+		header {
+			background: var(--bg-secondary);
+			border-bottom: 1px solid var(--border);
+			padding: 20px 0;
+			position: sticky;
+			top: 0;
+			z-index: 100;
+		}
+
+		.header-container {
+			max-width: 900px;
+			margin: 0 auto;
+			padding: 0 20px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		.logo {
+			font-size: 1.5em;
+			font-weight: bold;
+			color: var(--primary);
+			text-decoration: none;
+		}
+
+		nav {
+			display: flex;
+			align-items: center;
+			gap: 20px;
+		}
+
+		nav a {
+			text-decoration: none;
+			color: var(--text);
+			font-weight: 500;
+			transition: color 0.3s;
+		}
+
+		nav a:hover {
+			color: var(--primary);
+		}
+
+		.theme-toggle {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			cursor: pointer;
+		}
+
+		.toggle-switch {
+			width: 50px;
+			height: 28px;
+			background: var(--border);
+			border-radius: 14px;
+			position: relative;
+			display: flex;
+			align-items: center;
+			padding: 0 2px;
+			transition: background-color 0.3s;
+			border: 1px solid var(--border);
+		}
+
+		.toggle-switch.active {
+			background: var(--primary);
+			border-color: var(--primary);
+		}
+
+		.toggle-circle {
+			width: 24px;
+			height: 24px;
+			background: white;
+			border-radius: 50%;
+			position: absolute;
+			left: 2px;
+			transition: left 0.3s;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 14px;
+		}
+
+		.toggle-switch.active .toggle-circle {
+			left: 24px;
+		}
+
+		.toggle-label {
+			font-size: 0.9em;
+			color: var(--text-secondary);
+			white-space: nowrap;
+		}
+
+		.article-container {
+			max-width: 900px;
+			margin: 40px auto;
+			padding: 0 20px;
+		}
+
+		h1 {
+			font-size: 2.5em;
+			color: var(--text);
+			margin-bottom: 10px;
+		}
+
+		.article-meta {
+			color: var(--text-secondary);
+			margin-bottom: 30px;
+			padding-bottom: 20px;
+			border-bottom: 2px solid var(--primary);
+		}
+
+		h2 {
+			color: var(--primary);
+			margin: 40px 0 20px 0;
+			font-size: 1.8em;
+		}
+
+		h3 {
+			color: var(--text-tertiary);
+			margin: 30px 0 15px 0;
+			font-size: 1.3em;
+		}
+
+		h4 {
+			color: var(--text-tertiary);
+			margin: 20px 0 10px 0;
+			font-size: 1.1em;
+		}
+
+		p {
+			color: var(--text-secondary);
+			margin-bottom: 20px;
+			line-height: 1.8;
+		}
+
+		ul, ol {
+			color: var(--text-secondary);
+			margin-left: 20px;
+			margin-bottom: 20px;
+		}
+
+		li {
+			margin-bottom: 10px;
+		}
+
+		a {
+			color: var(--text-tertiary);
+			text-decoration: none;
+			transition: color 0.3s;
+		}
+
+		a:hover {
+			color: #a8c5e0;
+			text-decoration: underline;
+		}
+
+		strong {
+			color: var(--text-tertiary);
+		}
+
+		.article-footer {
+			margin-top: 60px;
+			padding: 30px;
+			background: var(--bg-secondary);
+			border: 1px solid var(--border);
+			border-radius: 8px;
+		}
+
+		.navigation {
+			display: flex;
+			justify-content: space-between;
+			margin-bottom: 30px;
+		}
+
+		.navigation a {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			color: white;
+			padding: 10px 20px;
+			border-radius: 4px;
+			text-decoration: none;
+			transition: transform 0.3s;
+		}
+
+		.navigation a:hover {
+			transform: translateY(-2px);
+			text-decoration: none;
+		}
+
+		footer {
+			background: #0f0f1e;
+			color: var(--text-secondary);
+			text-align: center;
+			padding: 40px 20px;
+			margin-top: 60px;
+			border-top: 1px solid var(--border);
+		}
+
+		html.light-mode footer {
+			background: #f0f0f0;
+		}
+
+		footer a {
+			color: var(--text-tertiary);
+			text-decoration: none;
+		}
+
+		footer a:hover {
+			text-decoration: underline;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<div class="header-container">
+			<a href="index.html" class="logo">Tripperist</a>
+			<nav>
+				<a href="posts.html">Posts</a>
+				<a href="userguide.html">UserGuide</a>
+				<div class="theme-toggle" id="themeToggle">
+					<div class="toggle-switch" id="toggleSwitch">
+						<div class="toggle-circle" id="toggleCircle">🌙</div>
+					</div>
+					<span class="toggle-label" id="toggleLabel">Dark</span>
+				</div>
+			</nav>
+		</div>
+	</header>
+
+	<div class="article-container">
+		<h1>BNA Roadtrip - Day 1 Nashville to Savannah, TN</h1>
+		<div class="article-meta">
+			<p>5 minute read</p>
+		</div>
+
+		<p>Come along as we explore Southwest Tennessee, and then take a deep dive into the Mississippi Delta as we explore the early roots of the Delta Blues.</p>
+
+		<h2>Background</h2>
+		<p>This roadtrip evolved a lot from when I first booked it back in April, 2023. My original plan was to drive from Nashville to Saint Louis via Tulsa continuing the Route 66 theme of my <a href="https://www.google.com/maps/d/u/3/edit?mid=1-QQX66fc359wj0v4VkK4FKOk-fY4r5Y&usp=sharing">first roadtrip</a> over a year ago.</p>
+
+		<p>I had to rethink that plan once I realized the rental car company was going to charge me 30 cents a mile. I'm assuming this is because it was a one-way rental.</p>
+
+		<p>Fortunately for me, I reached out to a few <a href="https://reddit.com/">Reddit</a> groups whose members, especially <a href="https://www.reddit.com/r/mississippi/comments/169auyj/nashville_mississippi_delta_natchez_trace/">r/mississippi</a>. They made a compelling reason to take a trip through blues history in the Mississippi Delta. Maybe we will find some live music along the way too.</p>
+
+		<h2>The Map</h2>
+		<p>Every roadtrip has a <a href="https://www.google.com/maps/d/u/3/edit?mid=1TOn-0MqT0Vx4tdH5zmcdEVTukpmtUlI&usp=sharing">map</a>. Follow along as we explore the roots of the Delta Blues. This is my actual route as opposed to my planned route</p>
+
+		<h2>The Playlist</h2>
+		<p>I created a <a href="https://open.spotify.com/playlist/0VFFfKQn9SoJ6cykn9r27T?si=528f8dadf5824a5d">Spotify Playlist</a> for this roadtrip. It's heavily focused on the early Delta Blues. Why not listen along as you read my trip report.</p>
+
+		<h2>Day 1 - Getting Started</h2>
+		<p>I left Las Vegas late afternoon on Alaska Airlines, and like most Alaska Airlines flights, I needed to get to Seattle before making a flight to Nashville on a Redeye.</p>
+
+		<p>My flight landed in Nashville around 5:30am and I headed to pickup the rental car. The App announced that I had received a Complimentary Upgrade…to a MiniVan. Rather than accept that, I headed to the space number to check it out. Umm, this would be a Hard No. I managed to talk with the fine people at the Avis Preferred window and ended up with a Chrysler 300 with CA plates.</p>
+
+		<p>Tripperist App in hand, it was time to hit my first of many stops.</p>
+
+		<h3>The Nashville Parthenon</h3>
+		<p>The Parthenon in Centennial Park, Nashville, Tennessee, is a full-scale replica of the original Parthenon in Athens. It was built in 1897 as part of the Tennessee Centennial Exposition. It was too early to go inside, so I snapped this picture on my walk around the park. It felt good to stretch my legs after the overnight flight from Seattle.</p>
+
+		<h3>The Tomb of President James Polk</h3>
+		<p>The 11th President of the United States (1845-1849) Polk took up the cause of US Expansion in the 19th Century. President during the acquisition of the Oregon territory in 1846 and the Mexican-American War from 1846 to 1848, under the guise of "Manifest Destiny". I'll talk more about Polk when I visit his home on the return portion of my trip.</p>
+
+		<h3>The Loveless Cafe</h3>
+		<p>Scratch Southern Meals include Homemade Hot Biscuits. So many people come to taste the biscuits that they are now making up to 10,000 every day. I stopped in for an amazing breakfast, and of course Biscuits and Preserves. This is definitely one stop you need to make if you are in the vicinity.</p>
+
+		<p>After a hearty breakfast (half of which I packed away for lunch later), it was time to start my journey down the Historic Natchez Trace.</p>
+
+		<h3>The Natchez Trace</h3>
+		<p>Originally a route forged by prehistoric animals, and later Native Americans, then Europeans, then armies, and now travelers like me, the 444 mile Trace followed the geographic ridgeline from Nashville, TN to Natchez, MS. Today, the Natchez Trace Parkway parallels the historic Old Trace.</p>
+
+		<p>If you drive the Trace, make sure you respect the 50 MPH speed limit as the Federal Park Rangers patrol and enforce regularly. Every now and then you can take a short drive on the "Old Trace" I don't think I could do more than 20 MPH on this part even if I tried.</p>
+
+		<h3>The War of 1812 Historical Marker</h3>
+		<p>Congress made their first declaration of war in 1812 in response to Great Britain's impedence of the new republic's desire to expand their territorial holdings. The Natchez Trace served as an important route to move troops for the defense of the region. Tennessee volunteers under the command of Andrew Jackson marched down the Natchez Trace to Natchez in January 1813.</p>
+
+		<p>Following the victory at the Battle of New Orleans, most of the Americans who fought the battle returned on the Trace. This memorial is dedicated to all those who perished along the way.</p>
+
+		<h3>Baker Bluff Overlook</h3>
+		<p>A quick rest stop at the Baker Bluff Overlook. In a generally flat area, this provided a small Overlook to the river valley below.</p>
+
+		<h3>The Gordon House</h3>
+		<p>Built in 1818, the Gordon House was one of the more impressive homes in the area. It was a landmark for travelers of the Old Trace, letting them know that soon they would be in Nashville. It also served as a place for a ferry crossing of the Duck river.</p>
+
+		<h3>Fall Hollow Falls</h3>
+		<p>There are lots of sites along the trace, so it's a bit challenging for me to balance seeing them all and making time. The Fall Hollow Falls stop, was great to get out and stretch my legs, but I probably wouldn't stop by again.</p>
+
+		<h3>Pinkney's Tomb</h3>
+		<p>One stop that I would recommend was <a href="https://perrycountylibrary.info/historical-society/pinckney-s-tomb">Pinckney's Tomb</a>. Pinckney Hufstedler had an aversion to water getting into his grave. Accordingly, he constructed a large wood and stone gravehouse over the graves of his immediate family. It originated as a low limestone wall surrounding a handful of graves to which Hufstedler added the wooden walls and roof about 1885. The uncommon structure is thought to be the largest gravehouse in Tennessee. Hufstedler also asked that his body be transported to the burial site in a wagon drawn by white oxen, rather than mules.</p>
+
+		<h3>Lunch Along the Tennessee River</h3>
+		<p>It's getting close to 1pm in the afternoon now, and my hunger is telling me it's time to pull over, and finish off the other half of my Loveless Cafe breakfast. So I find a nice spot along the Tennessee River at Clifton City Park to relax and dig back into my pulled-pork omelette and biscuits.</p>
+
+		<p>Now it's on to Savannah, TN, where all spend the night in a lovely Days Inn. The next morning we'll drive into Mississippi but not before visiting a Civil War battlefield.</p>
+
+		<h2>Let's Connect</h2>
+		<p>You can reach me on Threads <a href="https://threads.net/tripperist">@tripperist</a></p>
+
+		<div class="article-footer">
+			<div class="navigation">
+				<a href="roadtrip-maps.html">← Previous</a>
+				<a href="ms-blues-masterclass.html">Next →</a>
+			</div>
+		</div>
+	</div>
+
+	<footer>
+		<p>&copy; 2026 Tripperist. Built with love.</p>
+	</footer>
+</body>
+</html>

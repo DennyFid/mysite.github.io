@@ -1,0 +1,496 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tripperist User Guide</title>
+	<style>
+		:root {
+			--primary: #667eea;
+			--primary-dark: #764ba2;
+			--secondary: #b0b0b0;
+			--bg: #1a1a2e;
+			--text: #e0e0e0;
+			--text-secondary: #b0b0b0;
+			--text-tertiary: #7c9fd8;
+			--card-bg: #16213e;
+			--border: #2a2a3e;
+		}
+
+		html.light-mode {
+			--bg: #f5f5f5;
+			--text: #333;
+			--text-secondary: #555;
+			--text-tertiary: #667eea;
+			--card-bg: #ffffff;
+			--border: #e5e5e5;
+		}
+
+		body {
+			font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+			line-height: 1.6;
+			color: var(--text);
+			background-color: var(--bg);
+			margin: 0;
+			padding: 0;
+			transition: background-color 0.3s, color 0.3s;
+		}
+
+		header {
+			background: var(--card-bg);
+			border-bottom: 1px solid var(--border);
+			padding: 20px 0;
+			position: sticky;
+			top: 0;
+			z-index: 100;
+		}
+
+		.header-container {
+			max-width: 900px;
+			margin: 0 auto;
+			padding: 0 20px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		.logo {
+			font-size: 1.5em;
+			font-weight: bold;
+			color: var(--primary);
+			text-decoration: none;
+		}
+
+		nav {
+			display: flex;
+			align-items: center;
+			gap: 20px;
+		}
+
+		nav a {
+			text-decoration: none;
+			color: var(--text);
+			font-weight: 500;
+			transition: color 0.3s;
+		}
+
+		nav a:hover {
+			color: var(--primary);
+		}
+
+		.theme-toggle {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			cursor: pointer;
+		}
+
+		.toggle-switch {
+			width: 50px;
+			height: 28px;
+			background: var(--border);
+			border-radius: 14px;
+			position: relative;
+			display: flex;
+			align-items: center;
+			padding: 0 2px;
+			transition: background-color 0.3s;
+			border: 1px solid var(--border);
+		}
+
+		.toggle-switch.active {
+			background: var(--primary);
+			border-color: var(--primary);
+		}
+
+		.toggle-circle {
+			width: 24px;
+			height: 24px;
+			background: white;
+			border-radius: 50%;
+			position: absolute;
+			left: 2px;
+			transition: left 0.3s;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 14px;
+		}
+
+		.toggle-switch.active .toggle-circle {
+			left: 24px;
+		}
+
+		.toggle-label {
+			font-size: 0.9em;
+			color: var(--text-secondary);
+			white-space: nowrap;
+		}
+
+		.container {
+			max-width: 900px;
+			margin: 0 auto;
+			padding: 40px 20px;
+		}
+
+		.page-header {
+			text-align: center;
+			margin-bottom: 60px;
+		}
+
+		h1 {
+			color: var(--primary);
+			font-size: 2.5rem;
+			margin-bottom: 10px;
+		}
+
+		.subtitle {
+			font-size: 1.2rem;
+			color: var(--secondary);
+		}
+
+		h2 {
+			border-bottom: 2px solid var(--primary);
+			padding-bottom: 10px;
+			margin-top: 40px;
+			color: var(--primary-dark);
+		}
+
+		h3 {
+			margin-top: 30px;
+			color: var(--text);
+		}
+
+		.card {
+			background: var(--card-bg);
+			border: 1px solid var(--border);
+			border-radius: 12px;
+			padding: 24px;
+			margin-bottom: 24px;
+			box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+		}
+
+		.feature-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+			gap: 20px;
+		}
+
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			margin: 20px 0;
+			background: var(--card-bg);
+			border-radius: 8px;
+			overflow: hidden;
+			border: 1px solid var(--border);
+		}
+
+		th, td {
+			text-align: left;
+			padding: 12px 15px;
+			border-bottom: 1px solid var(--border);
+			color: var(--text);
+		}
+
+		th {
+			background-color: var(--primary);
+			color: white;
+		}
+
+		tr:last-child td {
+			border-bottom: none;
+		}
+
+		code {
+			background: #0f0f1e;
+			padding: 2px 6px;
+			border-radius: 4px;
+			font-family: monospace;
+			color: #7c9fd8;
+		}
+
+		pre {
+			background: #0f0f1e;
+			color: #7c9fd8;
+			padding: 16px;
+			border-radius: 8px;
+			overflow-x: auto;
+			border: 1px solid var(--border);
+		}
+
+		.badge {
+			display: inline-block;
+			padding: 4px 8px;
+			border-radius: 9999px;
+			font-size: 0.8rem;
+			font-weight: bold;
+			background: var(--primary);
+			color: white;
+			margin-right: 8px;
+		}
+
+		.workflow-step {
+			display: flex;
+			align-items: flex-start;
+			margin-bottom: 16px;
+		}
+
+		.step-number {
+			background: var(--primary);
+			color: white;
+			width: 28px;
+			height: 28px;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin-right: 12px;
+			flex-shrink: 0;
+			font-weight: bold;
+		}
+
+		.phone-mockup {
+			border: 8px solid var(--primary);
+			border-radius: 24px;
+			box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+			max-width: 100%;
+			height: auto;
+			margin-bottom: 15px;
+			background: var(--border);
+		}
+
+		.logo-img {
+			max-width: 120px;
+			margin-bottom: 20px;
+		}
+
+		footer {
+			text-align: center;
+			margin-top: 60px;
+			padding: 40px;
+			color: var(--secondary);
+			font-size: 0.9rem;
+			border-top: 1px solid var(--border);
+		}
+
+		footer a {
+			color: #7c9fd8;
+			text-decoration: none;
+		}
+
+		footer a:hover {
+			text-decoration: underline;
+		}
+
+		ul {
+			color: var(--text);
+		}
+
+		ul li {
+			margin-bottom: 10px;
+		}
+
+		strong {
+			color: #a8c5e0;
+		}
+
+		a {
+			color: #7c9fd8;
+			text-decoration: none;
+			transition: color 0.3s;
+		}
+
+		a:hover {
+			color: #a8c5e0;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<div class="header-container">
+			<a href="index.html" class="logo">Tripperist</a>
+			<nav>
+				<a href="posts.html">Posts</a>
+				<a href="userguide.html">UserGuide</a>
+			</nav>
+		</div>
+	</header>
+
+	<div class="container">
+		<div class="page-header">
+			<h1>Tripperist User Guide</h1>
+			<p class="subtitle">Your companion for discovering history and points of interest on the road.</p>
+		</div>
+
+		<section id="overview" class="card">
+			<h2>Product Overview</h2>
+			<p>Tripperist is a .NET MAUI application designed for road trippers and local explorers. It leverages the Historical Marker Database (HMDB) and other data sources to provide real-time discovery of your surroundings.</p>
+			<ul>
+				<li><strong>Proximity Discovery:</strong> See what's around you right now.</li>
+				<li><strong>Interactive Exploration:</strong> Browse a global map of markers and events.</li>
+				<li><strong>Audio-Guided Driving:</strong> Hear about historical sites as you drive past them.</li>
+				<li><strong>Trip Planning:</strong> Build custom itineraries for your next adventure.</li>
+			</ul>
+		</section>
+
+		<h2>Features</h2>
+		<div class="feature-grid">
+			<div class="card">
+				<h3>📍 Nearby Discovery</h3>
+				<p>The <strong>Nearby</strong> tab shows a live, distance-sorted list of historical markers within 25 miles.</p>
+				<p>Tap any item to open a detail sheet containing descriptions, events, and trip memberships.</p>
+			</div>
+			<div class="card">
+				<h3>🗺 Explore Map</h3>
+				<p>An interactive map that loads markers dynamically as you pan and zoom. Pins cluster together when zoomed out for a cleaner look.</p>
+			</div>
+			<div class="card">
+				<h3>🚗 Drive Mode</h3>
+				<p>Hands-free discovery. The app monitors your GPS and triggers <strong>Text-to-Speech (TTS)</strong> alerts as you approach interesting sites.</p>
+			</div>
+			<div class="card">
+				<h3>📅 Events</h3>
+				<p>A timeline of upcoming festivals, tours, and happenings at historical locations near you.</p>
+			</div>
+		</div>
+
+		<section class="card">
+			<h2>Upcoming Features</h2>
+			<div class="feature-grid">
+				<div>
+					<h3>🏛 User-Submitted Places <small style="font-size:0.75rem;color:var(--secondary);">(Phase 12)</small></h3>
+					<p>Paste a Google Maps or OSM link — the app auto-fills name, category, and coordinates. Review, edit, and submit for moderation. Track status in <strong>Profile → My Stuff → Saved Places</strong>.</p>
+					<p>Import an entire Google Maps saved list at once. Rate limits: <strong>10/day</strong> (Free) &middot; <strong>100/day</strong> (Pro).</p>
+				</div>
+				<div>
+					<h3>🌐 Published Trips &amp; Discover <small style="font-size:0.75rem;color:var(--secondary);">(Phase 13)</small></h3>
+					<p>Share your trips to a global Discover feed. Browse routes curated by other explorers — filter by Near Me, Category, or Recent.</p>
+					<p>Preview stops on a map, then <strong>Copy to My Trips</strong> with one tap. Drive Mode works immediately. Attribution preserved: "Based on [title] by [publisher]."</p>
+				</div>
+				<div>
+					<h3>🏆 Achievements &amp; Scavenger Hunts <small style="font-size:0.75rem;color:var(--secondary);">(Phase 14)</small></h3>
+					<p>Check in at historical sites and earn achievement badges. Drive Mode arrival alerts auto-satisfy check-ins. Stats dashboard: visits, states map, streaks, and themed Scavenger Hunts.</p>
+				</div>
+				<div>
+					<h3>🛣 Route Corridors <small style="font-size:0.75rem;color:var(--secondary);">(Phase 15)</small></h3>
+					<p>Find all interesting stops along your planned drive, sorted by mile marker. Download the corridor offline for cell-free adventures.</p>
+				</div>
+				<div>
+					<h3>🔍 Semantic Search <small style="font-size:0.75rem;color:var(--secondary);">(Phase 17)</small></h3>
+					<p>Find places using natural language: "Civil War markers in a park."</p>
+				</div>
+				<div>
+					<h3>🔄 Real-time Sync <small style="font-size:0.75rem;color:var(--secondary);">(Phase 20)</small></h3>
+					<p>Favorites and Trips sync instantly across all your devices &mdash; no manual refresh needed.</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="card">
+			<h2>User Interface</h2>
+			<h3>Main Navigation</h3>
+			<p>Use the bottom Tab Bar to navigate between key areas:</p>
+			<ul>
+				<li><strong>Nearby:</strong> List of the closest points of interest.</li>
+				<li><strong>Explore:</strong> Interactive map view.</li>
+				<li><strong>Drive:</strong> Specialized map for hands-free driving.</li>
+				<li><strong>Events:</strong> Timeline of local happenings.</li>
+				<li><strong>Profile:</strong> Your favorites, trips, settings, and &mdash; coming soon &mdash; <strong>My Stuff</strong> for tracking submitted places and published trips.</li>
+			</ul>
+		</section>
+
+		<h2>Typical Workflows</h2>
+		<div class="card">
+			<h3>Planning a Trip</h3>
+			<div class="workflow-step">
+				<div class="step-number">1</div>
+				<div>Find a place on the <strong>Explore</strong> map or <strong>Nearby</strong> list.</div>
+			</div>
+			<div class="workflow-step">
+				<div class="step-number">2</div>
+				<div>Tap the place to open details, then tap <strong>"Add to Trip"</strong>.</div>
+			</div>
+			<div class="workflow-step">
+				<div class="step-number">3</div>
+				<div>Choose an existing trip or select <strong>"＋ New Trip"</strong>.</div>
+			</div>
+
+			<h3>Using Drive Mode</h3>
+			<div class="workflow-step">
+				<div class="step-number">1</div>
+				<div>In <strong>Profile > Trips</strong>, select your trip and tap <strong>"Set as Active"</strong>.</div>
+			</div>
+			<div class="workflow-step">
+				<div class="step-number">2</div>
+				<div>Navigate to the <strong>Drive</strong> tab and tap <strong>"Start"</strong>.</div>
+			</div>
+		</div>
+
+		<h2>Configuration</h2>
+		<p>Customize your experience in <strong>Profile > Settings</strong>.</p>
+		<table>
+			<thead>
+				<tr>
+					<th>Setting</th>
+					<th>Description</th>
+					<th>Default</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><strong>Location Refresh</strong></td>
+					<td>How often distances are updated in lists.</td>
+					<td>15s</td>
+				</tr>
+				<tr>
+					<td><strong>Warning Radius</strong></td>
+					<td>Distance for the first "Coming up..." alert.</td>
+					<td>1.0 mi</td>
+				</tr>
+				<tr>
+					<td><strong>Arrival Radius</strong></td>
+					<td>Distance for the "You have reached..." alert.</td>
+					<td>300 ft</td>
+				</tr>
+				<tr>
+					<td><strong>Alert Cooldown</strong></td>
+					<td>Wait time before a place can alert again.</td>
+					<td>30 min</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<h2>Troubleshooting</h2>
+		<div class="card">
+			<table>
+				<thead>
+					<tr>
+						<th>Error</th>
+						<th>Solution</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>"Unable to determine location"</td>
+						<td>Enable Location Services in system settings.</td>
+					</tr>
+					<tr>
+						<td>"No places found nearby"</td>
+						<td>Try panning the Explore map or check internet connectivity.</td>
+					</tr>
+					<tr>
+						<td>"Speech Engine Failed"</td>
+						<td>Check device Accessibility / Speech settings.</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<footer>
+			<p>&copy; 2025 Tripperist. Built with .NET MAUI.</p>
+		</footer>
+	</div>
+
+</body>
+</html>

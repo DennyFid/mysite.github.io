@@ -1,0 +1,233 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tripperist - Level-Up Your Road Trip</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+            background: #1a1a2e;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #16213e;
+            border-bottom: 1px solid #2a2a3e;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        nav a {
+            margin-left: 30px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #667eea;
+        }
+        
+        .main-content {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        h2 {
+            font-size: 1.8em;
+            color: #667eea;
+            margin: 40px 0 20px 0;
+        }
+        
+        h3 {
+            font-size: 1.3em;
+            color: #333;
+            margin: 30px 0 15px 0;
+        }
+        
+        p {
+            color: #555;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .section {
+            margin: 50px 0;
+            padding: 40px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin: 10px 5px;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .notice {
+            background: #f0f7ff;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        
+        .notice a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .notice a:hover {
+            text-decoration: underline;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .social-links a {
+            text-decoration: none;
+            color: #667eea;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: #764ba2;
+        }
+        
+        footer {
+            background: #333;
+            color: #999;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+        
+        footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .badge {
+            margin: 30px 0;
+        }
+        
+        .badge img {
+            max-width: 200px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">Tripperist</div>
+            <nav>
+                <a href="#posts">Posts</a>
+                <a href="#about">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <h1>Welcome to Tripperist</h1>
+        <h2>Goodbye <span title="Fear of Missing Out">FOMO</span>, Hello Epic Discoveries</h2>
+        
+        <p>We're thrilled to announce the launch of Tripperist, a new app designed to level up your next road trip.</p>
+        
+        <p>While we're still in the early stages of development, we're excited to share our initial version, Tripperist - Mile 0 Release (1.0.5) on Google Play.</p>
+        
+        <div class="section">
+            <h2>Become a Tripperista</h2>
+            <p>If you have an Android device, we encourage you to take Tripperist for a test drive. We're actively seeking user feedback to shape the future of the app.</p>
+            
+            <p>Follow <strong>@tripperist</strong> on Instagram and visit <a href="https://tripperist.com/">https://tripperist.com/</a> for more updates.</p>
+            
+            <div class="notice">
+                Join our vibrant community on <a href="https://bit.ly/3yuxsZU">Discord</a>, engage with the team, access exclusive content, and provide valuable feedback.
+            </div>
+            
+            <div class="badge">
+                <a href="https://play.google.com/store/apps/details?id=com.tripperist.tripperistapp&utm_source=website&pcampaignid=badge" target="_blank">
+                    <img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" alt="Get it on Google Play Store" style="max-width: 200px;">
+                </a>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Join Our Test Group</h2>
+            <p>Scan the QR Code (or <a href="mailto:tripperista@gmail.com?subject=Please%20Add%20Me%20To%20The%20Test%20Group&body=My%20Google%20Account%20Is:">tap the link</a>) to send us an email. We need to "whitelist" your Google Play email address so that you can download the latest beta version from the Play Store.</p>
+            
+            <h3>Already in the Group?</h3>
+            <p>If you've been whitelisted, you will always receive the latest version from the Google Play Store.</p>
+        </div>
+    </div>
+
+    <footer>
+        <div style="max-width: 900px; margin: 0 auto;">
+            <div class="social-links" style="justify-content: center;">
+                <a href="https://www.threads.net/@tripperist" target="_blank">Threads</a>
+                <a href="https://github.com/tripperist" target="_blank">GitHub</a>
+                <a href="https://instagram.com/tripperist" target="_blank">Instagram</a>
+            </div>
+            <p>&copy; 2026 Tripperist. Powered by your vision.</p>
+        </div>
+    </footer>
+</body>
+</html>

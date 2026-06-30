@@ -1,0 +1,416 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>A Masterclass in Mississippi Blues - Tripperist</title>
+	<style>
+		:root {
+			--bg: #1a1a2e;
+			--bg-secondary: #16213e;
+			--text: #e0e0e0;
+			--text-secondary: #b0b0b0;
+			--text-tertiary: #7c9fd8;
+			--border: #2a2a3e;
+			--primary: #667eea;
+		}
+
+		html.light-mode {
+			--bg: #f5f5f5;
+			--bg-secondary: #ffffff;
+			--text: #333;
+			--text-secondary: #555;
+			--text-tertiary: #667eea;
+			--border: #e5e5e5;
+		}
+
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+			background: var(--bg);
+			color: var(--text);
+			line-height: 1.6;
+			transition: background-color 0.3s, color 0.3s;
+		}
+
+		header {
+			background: var(--bg-secondary);
+			border-bottom: 1px solid var(--border);
+			padding: 20px 0;
+			position: sticky;
+			top: 0;
+			z-index: 100;
+		}
+
+		.header-container {
+			max-width: 900px;
+			margin: 0 auto;
+			padding: 0 20px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		.logo {
+			font-size: 1.5em;
+			font-weight: bold;
+			color: var(--primary);
+			text-decoration: none;
+		}
+
+		nav {
+			display: flex;
+			align-items: center;
+			gap: 20px;
+		}
+
+		nav a {
+			text-decoration: none;
+			color: var(--text);
+			font-weight: 500;
+			transition: color 0.3s;
+		}
+
+		nav a:hover {
+			color: var(--primary);
+		}
+
+		.theme-toggle {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			cursor: pointer;
+		}
+
+		.toggle-switch {
+			width: 50px;
+			height: 28px;
+			background: var(--border);
+			border-radius: 14px;
+			position: relative;
+			display: flex;
+			align-items: center;
+			padding: 0 2px;
+			transition: background-color 0.3s;
+			border: 1px solid var(--border);
+		}
+
+		.toggle-switch.active {
+			background: var(--primary);
+			border-color: var(--primary);
+		}
+
+		.toggle-circle {
+			width: 24px;
+			height: 24px;
+			background: white;
+			border-radius: 50%;
+			position: absolute;
+			left: 2px;
+			transition: left 0.3s;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 14px;
+		}
+
+		.toggle-switch.active .toggle-circle {
+			left: 24px;
+		}
+
+		.toggle-label {
+			font-size: 0.9em;
+			color: var(--text-secondary);
+			white-space: nowrap;
+		}
+
+		.article-container {
+			max-width: 900px;
+			margin: 40px auto;
+			padding: 0 20px;
+		}
+
+		h1 {
+			font-size: 2.5em;
+			color: #e0e0e0;
+			margin-bottom: 10px;
+		}
+
+		.article-meta {
+			color: #b0b0b0;
+			margin-bottom: 30px;
+			padding-bottom: 20px;
+			border-bottom: 2px solid #667eea;
+		}
+
+		h2 {
+			color: #667eea;
+			margin: 40px 0 20px 0;
+			font-size: 1.8em;
+		}
+
+		h3 {
+			color: #a8c5e0;
+			margin: 30px 0 15px 0;
+			font-size: 1.3em;
+		}
+
+		h4 {
+			color: #a8c5e0;
+			margin: 20px 0 10px 0;
+			font-size: 1.1em;
+		}
+
+		p {
+			color: #b0b0b0;
+			margin-bottom: 20px;
+			line-height: 1.8;
+		}
+
+		ul, ol {
+			color: #b0b0b0;
+			margin-left: 20px;
+			margin-bottom: 20px;
+		}
+
+		li {
+			margin-bottom: 10px;
+		}
+
+		a {
+			color: #7c9fd8;
+			text-decoration: none;
+			transition: color 0.3s;
+		}
+
+		a:hover {
+			color: #a8c5e0;
+			text-decoration: underline;
+		}
+
+		strong {
+			color: #a8c5e0;
+		}
+
+		.article-footer {
+			margin-top: 60px;
+			padding: 30px;
+			background: #16213e;
+			border: 1px solid #2a2a3e;
+			border-radius: 8px;
+		}
+
+		.navigation {
+			display: flex;
+			justify-content: space-between;
+			margin-bottom: 30px;
+		}
+
+		.navigation a {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			color: white;
+			padding: 10px 20px;
+			border-radius: 4px;
+			text-decoration: none;
+			transition: transform 0.3s;
+		}
+
+		.navigation a:hover {
+			transform: translateY(-2px);
+			text-decoration: none;
+		}
+
+		footer {
+			background: #0f0f1e;
+			color: #808080;
+			text-align: center;
+			padding: 40px 20px;
+			margin-top: 60px;
+		}
+
+		footer a {
+			color: #7c9fd8;
+			text-decoration: none;
+		}
+
+		footer a:hover {
+			text-decoration: underline;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<div class="header-container">
+			<a href="index.html" class="logo">Tripperist</a>
+			<nav>
+				<a href="posts.html">Posts</a>
+				<a href="userguide.html">UserGuide</a>
+			</nav>
+		</div>
+	</header>
+
+	<div class="article-container">
+		<h1>A Masterclass in Mississippi Blues</h1>
+		<div class="article-meta">
+			<p>15 minute read</p>
+		</div>
+
+		<h3>The Final Itinerary: A Masterclass in Mississippi Blues</h3>
+		<p>This is the culmination of our work, a meticulously planned pilgrimage built around the once-in-a-lifetime 77th anniversary of the Blue Front Cafe. Every road is chosen, every stop is intentional. This is a journey designed to be felt, not just seen.</p>
+
+		<h2>Part 1: The Sacred South (Bentonia, The Delta & The Kings)</h2>
+
+		<h3>Day 1: Friday, September 26th - The Pilgrimage to Bentonia</h3>
+		<ul>
+			<li><strong>Driving:</strong> Approx. 3 hours (160 miles).</li>
+			<li><strong>Route:</strong> A direct mission. I-55 South from Memphis toward Jackson, then US-49 West to Bentonia.</li>
+			<li><strong>The Mission:</strong> Today is about arriving at a specific place at a specific time. The journey is the prelude to the main event.</li>
+			<li><strong>The Stops:</strong>
+				<ol>
+					<li>Grave of Elmore James, Ebenezer, MS: Your first sacred stop. Just off I-55, visit the Newport M.B. Church Cemetery to honor the "King of the Slide Guitar." A pilgrimage to the man who gave the world the definitive version of "Dust My Broom."</li>
+					<li>Insider Intel: As you drive, keep an eye out for the distinctive silver and blue Mississippi Blues Trail Markers. You will see them on the roadside all week; they are your guideposts.</li>
+				</ol>
+			</li>
+			<li><strong>Afternoon Arrival:</strong>
+				<ol>
+					<li>Check-in, Yazoo City: Drop your bags at your lodging.</li>
+					<li>Fuel Up: Grab a quick, late lunch in Yazoo City.</li>
+				</ol>
+			</li>
+			<li><strong>The Main Event (5:00 PM):</strong>
+				<ol>
+					<li>The Blue Front Cafe's 77th Anniversary Party, Bentonia: Arrive at one of the oldest and most significant juke joints in America. Shake the hand of the proprietor, Jimmy "Duck" Holmes, the last living master of the Bentonia School. The music, the food, the people, the very air in this place—this is the soul of your journey.</li>
+				</ol>
+			</li>
+			<li><strong>Lodging:</strong> Yazoo City.</li>
+		</ul>
+
+		<h3>Day 2: Saturday, September 27th - The Bentonia Immersion</h3>
+		<ul>
+			<li><strong>Driving:</strong> Minimal.</li>
+			<li><strong>The Mission:</strong> To absorb the unique, haunting, minor-key sound of Bentonia blues at its source.</li>
+			<li><strong>The Stops:</strong>
+				<ol>
+					<li>Return to the Blue Front Cafe: The party continues. Spend the day. Talk to the musicians. Hear the stories. This is a living history lesson.</li>
+					<li>Bentonia Blues Trail Markers: Find the official markers for the Blue Front Cafe itself and for the ghostly father of the style, Nehemiah "Skip" James.</li>
+					<li>The Graves of the Bentonia School: In the New Jerusalem Cemetery, you will find the graves of Skip James and the duo of Jack Owens & Bud Spires, completing the trinity of this unique musical style.</li>
+				</ol>
+			</li>
+			<li><strong>Quirky Find:</strong> In Yazoo City's Glenwood Cemetery, seek out the strange and wonderful grave of the "Witch of Yazoo," a cornerstone of Southern Gothic folklore.</li>
+			<li><strong>Evening:</strong> The grand finale of the anniversary celebration. Go all in.</li>
+			<li><strong>Lodging:</strong> Yazoo City.</li>
+		</ul>
+
+		<h3>Day 3: Sunday, September 28th - The Quest for the Three Kings</h3>
+		<ul>
+			<li><strong>Driving:</strong> Approx. 1.5 hours (65 miles).</li>
+			<li><strong>The Mission:</strong> Today you walk in the footsteps of a phantom and pay tribute to a king.</li>
+			<li><strong>The Stops:</strong>
+				<ol>
+					<li>The Three Graves of Robert Johnson: This is a sacred rite of passage for any blues pilgrim.
+						<ul>
+							<li>Grave #1 (Morgan City): Begin at the Payne Chapel Memorial Baptist Church.</li>
+							<li>Grave #2 (Greenwood): The "official" site at the Little Zion M.B. Church.</li>
+							<li>Grave #3 (Quito): The obelisk memorial at the Mount Zion M.B. Church.</li>
+						</ul>
+					</li>
+					<li>Mississippi John Hurt Blues Trail Marker, Avalon: A slight detour, but you must find the marker for the gentle songster in the town he made famous.</li>
+					<li>Hubert Sumlin Blues Trail Marker, Greenwood: Honor the legendary guitarist for Howlin' Wolf.</li>
+				</ol>
+			</li>
+			<li><strong>Lunch:</strong> The legendary Crystal Grill in Greenwood. A Mississippi landmark.</li>
+			<li><strong>Afternoon:</strong> Drive to Indianola, your home for the next two nights.</li>
+			<li><strong>Lodging:</strong> Indianola.</li>
+		</ul>
+
+		<h3>Day 4: Monday, September 29th - The Deep Delta Triangle</h3>
+		<ul>
+			<li><strong>Driving:</strong> Approx. 2.5 hours total (a loop).</li>
+			<li><strong>The Mission:</strong> With the B.B. King museum closed, you have a gift: a full day to explore the deep, rich heart of the central Delta.</li>
+			<li><strong>The Stops (The Leland-Greenville-Belzoni Triangle):</strong>
+				<ol>
+					<li>Highway 61 Blues Museum, Leland: Your first stop. A magnificent, heartfelt museum packed with treasures.</li>
+					<li>Leland's Outdoor Museum: Walk the town to see its fantastic blues murals and find the numerous Blues Trail Markers.</li>
+					<li>Grave of James "Son" Thomas: Find his unique, self-sculpted gravestone in the Bogue Memorial Cemetery.</li>
+					<li>The Mississippi River Levee: Drive a portion of this massive earthen wall for a breathtaking perspective of the Delta's vastness.</li>
+					<li>Nelson Street, Greenville: Drive this historic strip, once a bustling hub of blues and R&B.</li>
+					<li>Belzoni - The Heart of the Delta: Drive south to this town, rich in blues history.</li>
+				</ol>
+			</li>
+			<li><strong>Lodging:</strong> Indianola.</li>
+		</ul>
+
+		<h2>Part 2: The Clarksdale Immersion & Hill Country Finale</h2>
+
+		<h3>Day 5: Tuesday, September 30th - The King's Farewell, The Journey North</h3>
+		<ul>
+			<li><strong>Driving:</strong> Approx. 1 hour (55 miles) to Clarksdale.</li>
+			<li><strong>The Mission:</strong> Pay tribute to the King of the Blues, then make the pilgrimage to the "birthplace."</li>
+			<li><strong>The Stops:</strong>
+				<ol>
+					<li>B.B. King Museum and Delta Interpretive Center (10:00 AM): Your appointment with royalty. Spend two hours exploring the life of the world's greatest blues ambassador.</li>
+					<li>B.B. King's Grave: A quiet moment of reflection on the museum grounds.</li>
+					<li>Dockery Farms: The essential first stop on your way north. This is the beautifully preserved site where the blues arguably began.</li>
+					<li>Po' Monkey's Lounge, Merigold: The iconic photo op. A monument to folk art and the juke joint spirit.</li>
+					<li>Charley Patton Grave, Holly Ridge: Visit the resting place of the "Father of the Delta Blues."</li>
+				</ol>
+			</li>
+			<li><strong>Late Afternoon:</strong> Arrive in Clarksdale. Check into your lodging for the next five nights. Your first stop is Cat Head Delta Blues & Folk Art to get the full week's music schedule from the experts.</li>
+			<li><strong>Lodging:</strong> Clarksdale.</li>
+		</ul>
+
+		<h3>Days 6-7: Clarksdale Deep Dive & Arkansas Pilgrimage</h3>
+		<p>Spend two full days immersing yourself in Clarksdale's blues culture and making a pilgrimage across the river to Arkansas. Visit the Delta Blues Museum, Riverside Hotel, and experience live music at authentic venues like Red's Lounge and Ground Zero Blues Club.</p>
+
+		<h3>Days 8-9: The Legends' Haunts & Grand Finale</h3>
+		<p>Explore Muddy Waters' territory, visit Mound Bayou, and experience a full weekend of live music in Clarksdale. This is the crescendo of your journey.</p>
+
+		<h3>Day 10: Sunday, October 5th - The Great Migration</h3>
+		<p>Transition from the Delta to the Hill Country. Visit the grave of Mississippi Fred McDowell, explore Oxford including William Faulkner's Rowan Oak, and enjoy dinner at Phillips Grocery in Holly Springs.</p>
+
+		<h3>Day 11: Monday, October 6th - The Hill Country Finale</h3>
+		<p>Make your final pilgrimage to the Hill Country legends before heading to Memphis International Airport. Visit graves of Junior Kimbrough, R.L. Burnside, and Jessie Mae Hemphill.</p>
+
+		<h2>Resources & Further Reading</h2>
+		<h3>Essential Online Resources</h3>
+		<ul>
+			<li><a href="https://msbluestrail.org/">The Mississippi Blues Trail</a> - The single most important resource for your journey.</li>
+			<li><a href="https://www.cathead.biz/">Cat Head Delta Blues & Folk Art</a> - Current scene updates and gig guides.</li>
+			<li><a href="https://livingblues.com/">Living Blues Magazine</a> - Premier blues scholarship and journalism.</li>
+		</ul>
+
+		<h3>Foundational Books</h3>
+		<ul>
+			<li><strong>Deep Blues: A Musical and Cultural History of the Mississippi Delta</strong> by Robert Palmer - The definitive narrative.</li>
+			<li><strong>The Land Where the Blues Began</strong> by Alan Lomax - Firsthand accounts from a legendary musicologist.</li>
+			<li><strong>Escaping the Delta: Robert Johnson and the Invention of the Blues</strong> by Elijah Wald - Fascinating reexamination of early blues artists.</li>
+		</ul>
+
+		<h3>Essential Documentaries</h3>
+		<ul>
+			<li><strong>Deep Blues (1992)</strong> - Features incredible performances by Hill Country legends.</li>
+			<li><strong>The Soul of a Man (2003)</strong> - From Martin Scorsese's "The Blues" series, focusing on Skip James, Blind Willie Johnson, and J.B. Lenoir.</li>
+			<li><strong>M for Mississippi (2008)</strong> - A modern road trip documentary proving the blues is still alive.</li>
+		</ul>
+
+		<h2>Let's Connect</h2>
+		<p>You can reach me on Threads <a href="https://threads.net/tripperist">@tripperist</a></p>
+
+		<div class="article-footer">
+			<div class="navigation">
+				<a href="bna-day-01.html">← Previous</a>
+				<a href="posts.html">Back to Posts</a>
+			</div>
+		</div>
+	</div>
+
+	<footer>
+		<p>&copy; 2026 Tripperist. Built with love.</p>
+	</footer>
+</body>
+</html>
