@@ -485,7 +485,7 @@
         const toggleCircle = document.getElementById('toggleCircle');
         const toggleLabel = document.getElementById('toggleLabel');
 
-        // Initialize theme from localStorage or system preference
+        // Initialize theme from localStorage, default to Dark Mode
         function initializeTheme() {
             const savedTheme = localStorage.getItem('theme');
 
@@ -494,25 +494,12 @@
                 toggleSwitch.classList.remove('active');
                 toggleCircle.textContent = '☀️';
                 toggleLabel.textContent = 'Light';
-            } else if (savedTheme === 'dark') {
+            } else {
+                // Default to Dark Mode
                 html.classList.remove('light-mode');
                 toggleSwitch.classList.add('active');
                 toggleCircle.textContent = '🌙';
                 toggleLabel.textContent = 'Dark';
-            } else {
-                // Use system preference
-                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                if (prefersDark) {
-                    html.classList.remove('light-mode');
-                    toggleSwitch.classList.add('active');
-                    toggleCircle.textContent = '🌙';
-                    toggleLabel.textContent = 'Dark';
-                } else {
-                    html.classList.add('light-mode');
-                    toggleSwitch.classList.remove('active');
-                    toggleCircle.textContent = '☀️';
-                    toggleLabel.textContent = 'Light';
-                }
             }
         }
 
