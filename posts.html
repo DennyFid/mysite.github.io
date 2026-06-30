@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -52,8 +52,9 @@ max-width: 1000px;
 margin: 0 auto;
 padding: 0 20px;
 display: flex;
-justify-content: space-between;
+justify-content: flex-start;
 align-items: center;
+gap: 30px;
 }
 
 .logo {
@@ -66,18 +67,20 @@ text-decoration: none;
 nav {
 display: flex;
 align-items: center;
-gap: 20px;
+gap: 30px;
+flex-grow: 1;
 }
 
 nav a {
 text-decoration: none;
-color: var(--text);
-font-weight: 500;
-transition: color 0.3s;
+color: var(--primary);
+font-size: 1.5em;
+font-weight: bold;
+transition: opacity 0.3s;
 }
 
 nav a:hover {
-color: var(--primary);
+opacity: 0.8;
 }
 
 .theme-toggle {
@@ -85,6 +88,7 @@ display: flex;
 align-items: center;
 gap: 10px;
 cursor: pointer;
+margin-left: auto;
 }
 
 .toggle-switch {
